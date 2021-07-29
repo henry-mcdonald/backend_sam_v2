@@ -138,12 +138,9 @@ def handle_my_custom_event(json_msg, methods=['GET', 'POST']):
     socketio.emit('sam response', sam_json, callback=messageSent)
     print(f'{log_dt()} SENT: {str(sam_json)}')
 
-# from flask_sslify import SSLify
-# if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
-#     sslify = SSLify(app)
+
 if(__name__ == '__main__'):
     bot_name = 'Sam'
     cb = ChatBot(bot_name, intents_file_path,
                  all_data_pickle_file_path, chatbot_model_file_path)
-    from waitress import serve
-    serve(app, host='0.0.0.0', port=8000)
+    socketio.run(app, ssl_context = 'adhoc')
