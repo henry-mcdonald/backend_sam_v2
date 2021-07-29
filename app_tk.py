@@ -15,9 +15,9 @@ import tkinter as tk
 
 # GLOBAL VARS
 # Files and Paths
-intents_file_path = '../data/intents.json'
-all_data_pickle_file_path = '../models/all_data.pkl'
-chatbot_model_file_path = '../models/chatbotmodel.h5'
+intents_file_path = './data/intents.json'
+all_data_pickle_file_path = './models/all_data.pkl'
+chatbot_model_file_path = './models/chatbotmodel.h5'
 
 
 
@@ -158,9 +158,7 @@ class TkWindow:
 
         self.text_widget.see(tk.END)
 
-from flask_sslify import SSLify
-if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
-    sslify = SSLify(app)
+
 if __name__ == "__main__":
     bot_name = 'Sam'
     cb = ChatBot(bot_name, intents_file_path,
